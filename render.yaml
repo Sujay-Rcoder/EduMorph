@@ -1,0 +1,39 @@
+# Render.com Deployment Configuration
+# EduMorph RAG - Educational Document Q&A System
+
+services:
+  - type: web
+    name: edumorph-rag
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    
+    # Health check configuration
+    healthCheckPath: /health
+    
+    # Environment variables
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false  # Must be set manually in Render dashboard
+      - key: CHROMA_PERSIST_DIR
+        value: /data/chroma
+      - key: UPLOAD_DIR
+        value: /app/uploads
+      - key: LOG_LEVEL
+        value: INFO
+    
+    # Persistent disk for ChromaDB data
+    disk:
+      name: chroma-data
+      mountPath: /data
+      sizeGB: 1  # Free tier allows 1GB
+
+    # Auto-deploy on push
+    autoDeploy: true
+    
+    # Build filter - only deploy on changes to these paths
+    buildFilter:
+      paths:
+        - app/**
+        - requirements.txt
+        - Dockerfile
+        - render.yaml

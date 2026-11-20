@@ -1,0 +1,44 @@
+/* App-specific styles */
+
+/* Ensure main content fills available space */
+.main-content {
+    background: var(--bg-primary);
+}
+
+/* Modes View */
+.modes-view {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    min-height: 100vh;
+    justify-content: center;
+}
+
+.dashboard-btn {
+    margin-top: var(--space-md);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.upload-more-btn {
+    opacity: 0.6;
+    font-size: var(--font-size-sm);
+    transition: all 0.3s ease;
+}
+
+.upload-more-btn:hover {
+    opacity: 1;
+    color: var(--accent-primary);
+}
